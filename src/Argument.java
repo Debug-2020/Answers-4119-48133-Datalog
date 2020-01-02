@@ -1,4 +1,3 @@
-
 public class Argument {
 
 	private final Value value;

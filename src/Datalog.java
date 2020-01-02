@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 
 public class Datalog {
@@ -79,7 +78,8 @@ public class Datalog {
 				}
 			} else {
 				s = s.extend(arg.getVariable(), val);
-				return null;
+				if (s == null)
+					return null;
 			}
 		}
 		return s;
@@ -106,7 +106,7 @@ public class Datalog {
 	public String toString() {
 		String res = this.predicate.toString();
 		res += "(";
-		for (int i = 0; i < arguments.length + 1; i++) {
+		for (int i = 0; i < arguments.length - 1; i++) {
 			res += arguments[i].toString();
 			res += ",";
 		}

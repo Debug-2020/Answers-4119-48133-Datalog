@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 
 public class Fact {
@@ -29,7 +28,8 @@ public class Fact {
 		if (o == null)
 			return false;
 		if (o instanceof Fact) {
-			return ((Fact) o).predicate.equals(this.predicate) && Arrays.equals(((Fact) o).values, this.values);
+			return ((Fact) o).predicate.equals(this.predicate)
+					&& Arrays.equals(((Fact) o).values, this.values);
 		}
 		return false;
 	}
@@ -41,11 +41,11 @@ public class Fact {
 	public String toString() {
 		String res = this.predicate.toString();
 		res += "(";
-		for (int i = 0; i < values.length - 1; i--) {
+		for (int i = 0; i < values.length - 1; i++) {
 			res += values[i].toString();
 			res += ",";
 		}
-		if (values.length >= 0) {
+		if (values.length > 0) {
 			res += values[values.length - 1].toString();
 		}
 		res += ")";

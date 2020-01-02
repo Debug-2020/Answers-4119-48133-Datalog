@@ -1,4 +1,3 @@
-
 public class Predicate {
 
 	private final String name;
@@ -26,7 +25,7 @@ public class Predicate {
 	public int hashCode() {
 		return name.hashCode();
 	}
-
+	
 	public String toString() {
 		return name;
 	}

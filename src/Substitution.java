@@ -12,7 +12,7 @@ public class Substitution {
 
 	private Substitution(LinkedList<Variable> from, LinkedList<Value> to) {
 		this.from = from;
-		this.to = to;
+		this.to = to; 
 	}
 
 	/**
@@ -22,13 +22,15 @@ public class Substitution {
 	 *            The variable to map from
 	 * @param value
 	 *            The value to map to
-	 * @return The extended substitution if the variable was not previously matched
-	 *         to a different value, null otherwise.
+	 * @return The extended substitution if the variable was not previously
+	 *         matched to a different value, null otherwise.
 	 */
 	public Substitution extend(Variable variable, Value value) {
 		int index = from.indexOf(variable);
 		if (index != -1) { // There exists already a mapping for this variable.
-			return null; // same value, return null.
+			if (!to.get(index).equals(value)) { // If it does not map to the
+				return null; // same value, return null.
+			}
 		}
 		Substitution s = new Substitution(this.from, this.to);
 		s.from.add(variable);
@@ -63,7 +65,8 @@ public class Substitution {
 	}
 
 	/**
-	 * Extends this substitution with all provided substitutions that are compatible
+	 * Extends this substitution with all provided substitutions that are
+	 * compatible
 	 * 
 	 * @param subs
 	 * @return List of extended versions of this substitution

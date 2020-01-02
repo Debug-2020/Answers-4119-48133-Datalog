@@ -23,8 +23,8 @@ public class Rule {
 
 	/**
 	 * Finds all substitutions that satisfy the body of this rule such that the
-	 * resulting facts are in the database, then applies these substitutions on the
-	 * head of the rule.
+	 * resulting facts are in the database, then applies these substitutions on
+	 * the head of the rule.
 	 * 
 	 * @param database
 	 *            Database to find satisfying body of the rule in
@@ -41,8 +41,8 @@ public class Rule {
 	}
 
 	/**
-	 * Find all consistent substitutions that map the atoms in the worklist to facts
-	 * in the database.
+	 * Find all consistent substitutions that map the atoms in the worklist to
+	 * facts in the database.
 	 * 
 	 * @param database
 	 *            Database of facts
@@ -51,8 +51,8 @@ public class Rule {
 	 * @return A list of all substitutions that map all atoms in the worklist to
 	 *         facts in the database
 	 */
-	private static LinkedList<Substitution> findAllSubstitutions(Collection<Fact> database,
-			LinkedList<Datalog> workList) {
+	private static LinkedList<Substitution> findAllSubstitutions(
+			Collection<Fact> database, LinkedList<Datalog> workList) {
 
 		LinkedList<Substitution> res = new LinkedList<Substitution>();
 		// no atoms: empty substitution
@@ -72,16 +72,17 @@ public class Rule {
 				newWorkList.add(s.applyOn(workList.get(i)));
 			}
 			// And call method recursively.
-			LinkedList<Substitution> recSub = findAllSubstitutions(database, newWorkList);
+			LinkedList<Substitution> recSub = findAllSubstitutions(database,
+					newWorkList);
 			// Extend substitution s with those recursively found and add to
 			// result.
 			res.addAll(s.extendAll(recSub));
 		}
 		return res;
 	}
-
+	
 	public String toString() {
-		String res = head.toString() + " :- ";
+		String res =head.toString() + " :- ";
 		for (int i = 0; i < body.length - 1; i++) {
 			res += body[i].toString();
 			res += ",";

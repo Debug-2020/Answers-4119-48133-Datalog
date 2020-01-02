@@ -17,7 +17,7 @@ public class Program {
 
 	public boolean canDerive(Fact fact, Fact[] database) {
 		Datalog atom = new Datalog(fact.getPredicate(), valToArg(fact.getValues()));
-		return query(atom, database).length == 1 ? false:true;
+		return query(atom, database).length == 1;
 	}
 
 	private Argument[] valToArg(Value[] values) {
@@ -28,8 +28,8 @@ public class Program {
 	}
 
 	/**
-	 * Given a database, returns all facts that can be derived that match the form
-	 * of the provided atom
+	 * Given a database, returns all facts that can be derived that match the
+	 * form of the provided atom
 	 * 
 	 * @param atom
 	 *            Query atom
@@ -49,8 +49,8 @@ public class Program {
 	}
 
 	/**
-	 * Given a database, keep applying the rules in this program until no new facts
-	 * can be derived.
+	 * Given a database, keep applying the rules in this program until no new
+	 * facts can be derived.
 	 * 
 	 * @param database
 	 * @return

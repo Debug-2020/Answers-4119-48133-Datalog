@@ -26,7 +26,7 @@ public class Variable {
 	public int hashCode() {
 		return identifier.hashCode();
 	}
-
+	
 	public String toString() {
 		return "VAR:" + identifier;
 	}
